@@ -4,7 +4,7 @@ namespace Atividade1.Classes
 {
     public class Elevador
     {
-        public int andarAtual = 0;
+        public int andarAtual;
         public int quantidadeAndares;
         public int capacidadeElevador;
         public int pessoasElevador;
@@ -50,7 +50,7 @@ namespace Atividade1.Classes
             {
                 Console.WriteLine("Quantas pessoas sairam?");
                 retirarPessoas = int.Parse(Console.ReadLine());
-                quantidadePessoas = quantidadePessoas + retirarPessoas;
+                quantidadePessoas = quantidadePessoas - retirarPessoas;
             }
             else
             {
@@ -62,11 +62,11 @@ namespace Atividade1.Classes
             Console.WriteLine("Quantos andares você deseja subir?");
             subirAndar = int.Parse(Console.ReadLine());
 
-            andaresSubidos = andarAtual + subirAndar;
+            andarAtual = andarAtual + subirAndar;
 
-            if (andaresSubidos <= quantidadeAndares)
+            if (andarAtual <= quantidadeAndares)
             {
-                Console.WriteLine($"Você chegou no {andaresSubidos}º andar");
+                Console.WriteLine($"Você chegou no {andarAtual}º andar");
             }
             else
             {
@@ -76,20 +76,19 @@ namespace Atividade1.Classes
 
         public void Descer()
         {
-            andaresDescidos = andarAtual;
 
             Console.WriteLine("Quantos andares você deseja descer?");
             descerAndar = int.Parse(Console.ReadLine());
 
-            andarAtual = andaresDescidos - descerAndar;
+            andarAtual = andarAtual - descerAndar;
 
-            if (andaresDescidos <= quantidadeAndares)
+            if (andarAtual <= quantidadeAndares && andarAtual >= 0)
             {
                 Console.WriteLine($"Você chegou no {andarAtual}º andar");
             }
             else
             {
-                Console.WriteLine("Não é possível subir essa quantidade de andares!");
+                Console.WriteLine("Não é possível descer essa quantidade de andares!");
             }
         }
     }
